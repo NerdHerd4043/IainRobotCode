@@ -14,7 +14,9 @@ public class ShiftUp extends CommandBase {
    * Creates a new ShiftUp.
    */
   public ShiftUp() {
+    
     // Use addRequirements() here to declare subsystem dependencies.
+
   }
 
   // Called when the command is initially scheduled.
