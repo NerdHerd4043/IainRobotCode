@@ -9,9 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.subsystems.*;
-import 
+import frc.robot.commands.*;
 
 // import frc.robot.commands.ExampleCommand;
 // import frc.robot.subsystems.ExampleSubsystem;
@@ -27,6 +29,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
 
+  private static XboxController driveStick = new XboxController(0);
+
+
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -35,10 +40,11 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    drivetrain.setDefaultCommand(
-      new DefaultDrive(drivetrain, forward, rotation)
-
-    )
+    new DefaultDrive(
+      drivetrain, 
+      () -> driveStick.getY(GenericHID.Hand.kLeft),
+      () -> driveStick.getX(GenericHID.Hand.kRight)
+    );
   }
 
   /**
@@ -48,6 +54,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    new JoystickButton(driveStick, Button.kBumperLeft.value).whenPressed(new ShiftUp(drivetrain));
+    new JoystickButton(driveStick, Button.kBumperRight.value).whenPressed(new ShiftDown(drivetrain));
   }
 
 

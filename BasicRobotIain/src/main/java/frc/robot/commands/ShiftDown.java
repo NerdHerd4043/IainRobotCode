@@ -14,9 +14,9 @@ import frc.robot.subsystems.Drivetrain;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ShiftUp extends InstantCommand {
+public class ShiftDown extends InstantCommand {
   private Drivetrain drivetrain;
-  public ShiftUp(Drivetrain drivetrain) {
+  public ShiftDown(Drivetrain drivetrain) {
     this.drivetrain = drivetrain;
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -26,6 +26,6 @@ public class ShiftUp extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drivetrain.shift(DriveConstants.shiftUpID);
+    drivetrain.shift(DriveConstants.shiftDownID);
   }
 }

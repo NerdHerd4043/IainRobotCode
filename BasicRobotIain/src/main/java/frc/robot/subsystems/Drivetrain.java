@@ -13,7 +13,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.DriveConstants;
+import edu.wpi.first.wpilibj.Solenoid;
+
+import frc.robot.Constants.*;
 
 public class Drivetrain extends SubsystemBase {
   private DifferentialDrive diffDrive;
@@ -23,7 +25,7 @@ public class Drivetrain extends SubsystemBase {
   private CANSparkMax backLeftMotor = new CANSparkMax(DriveConstants.backLeftMotorID, MotorType.kBrushless);
   private CANSparkMax backRightMotor = new CANSparkMax(DriveConstants.backRightMotorID, MotorType.kBrushless);
 
-  private Solonoid shifter = new Solonoid(RobotConstants.PCMID);
+  private Solenoid shifter = new Solenoid(RobotConstants.PCMID);
 
   /**
    * Creates a new Drivetrain.
@@ -44,13 +46,13 @@ public class Drivetrain extends SubsystemBase {
 /**
  * Restores the Factory Defaults for the drive motors
  */
-  private void restoreFactoryDefaults {
+  private void restoreFactoryDefaults() {
     backLeftMotor.restoreFactoryDefaults();
     backRightMotor.restoreFactoryDefaults();
     frontLeftMotor.restoreFactoryDefaults();
     frontRightMotor.restoreFactoryDefaults();
-
   }
+
 /**
  * Sets the idle mode setting for the entire drivetrain
  * @param mode idle mode (coast or brake)
@@ -69,6 +71,10 @@ public class Drivetrain extends SubsystemBase {
   public void arcadeDrive(double fwd, double rot){
     diffDrive.arcadeDrive(fwd, rot, true);
 
+  }
+
+  public void shift (boolean a){
+    shifter.set(a);
   }
 
 
