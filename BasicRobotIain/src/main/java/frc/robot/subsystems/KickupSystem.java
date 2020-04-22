@@ -7,17 +7,26 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HopperConstants;
 
-public class Hopper extends SubsystemBase {
+public class KickupSystem extends SubsystemBase {
+  private WPI_TalonSRX kickupMotor = new WPI_TalonSRX(HopperConstants.kickupMotorID);
 
-  
   /**
-   * Creates a new Hopper.
+   * Creates a new KickupSystem.
    */
-  public Hopper() {
-   
+  public KickupSystem() {
+    kickupMotor.configFactoryDefault();
+    kickupMotor.setNeutralMode(NeutralMode.Brake);
+
+  }
+
+  public void kickup(double speed) {
+    kickupMotor.set(speed);
   }
 
   @Override

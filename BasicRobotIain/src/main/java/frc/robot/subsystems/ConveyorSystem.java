@@ -7,17 +7,27 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc.robot.Constants.HopperConstants;
 
-public class Hopper extends SubsystemBase {
+public class ConveyorSystem extends SubsystemBase {
+  private CANSparkMax conveyorMotor = new CANSparkMax(HopperConstants.conveyorMotorID, MotorType.kBrushless);
 
-  
   /**
-   * Creates a new Hopper.
+   * Creates a new ConveyorSystem.
    */
-  public Hopper() {
-   
+  public ConveyorSystem() {
+    conveyorMotor.restoreFactoryDefaults();
+
+    conveyorMotor.setIdleMode(IdleMode.kBrake);
+  }
+
+  public void conveyor(double speed) {
+    conveyorMotor.set(speed);
   }
 
   @Override

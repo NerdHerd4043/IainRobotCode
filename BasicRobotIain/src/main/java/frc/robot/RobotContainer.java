@@ -27,7 +27,10 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
+
   private final Hopper hopper = new Hopper();
+  private final ConveyorSystem conveyorSystem = new ConveyorSystem();
+  private final KickupSystem kickupSystem = new KickupSystem();
 
   private static XboxController driveStick = new XboxController(0);
 
@@ -57,8 +60,8 @@ public class RobotContainer {
     new JoystickButton(driveStick, Button.kBumperLeft.value).whenPressed(new ShiftUp(drivetrain));
     new JoystickButton(driveStick, Button.kBumperRight.value).whenPressed(new ShiftDown(drivetrain));
 
-    new JoystickButton(driveStick, Button.kX.value).whileHeld(new Conveyor(hopper));
-    new JoystickButton(driveStick, Button.kA.value).whileHeld(new Kickup(hopper));
+    new JoystickButton(driveStick, Button.kX.value).whileHeld(new Conveyor(conveyorSystem));
+    new JoystickButton(driveStick, Button.kA.value).whileHeld(new Kickup(kickupSystem));
   }
 
 

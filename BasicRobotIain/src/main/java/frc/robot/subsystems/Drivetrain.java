@@ -72,7 +72,10 @@ public class Drivetrain extends SubsystemBase {
     diffDrive.arcadeDrive(fwd, rot, true);
 
   }
-
+/**
+ * Shifts the shifter.
+ * @param a whether the shifter shifts up or down.
+ */
   public void shift (boolean a){
     shifter.set(a);
   }

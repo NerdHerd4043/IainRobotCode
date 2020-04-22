@@ -28,4 +28,5 @@ public class ShiftUp extends InstantCommand {
   public void initialize() {
     drivetrain.shift(DriveConstants.shiftUpID);
   }
+  
 }

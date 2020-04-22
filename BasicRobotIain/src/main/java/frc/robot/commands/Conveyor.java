@@ -8,41 +8,38 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Hopper;
-import frc.robot.Constants.*;
+import frc.robot.subsystems.ConveyorSystem;
+import frc.robot.Constants.HopperConstants;
 
 public class Conveyor extends CommandBase {
-  private final Hopper hopper;
+  private final ConveyorSystem conveyorSystem;
 
 
   /**
    * Creates a new Conveyor.
    */
-  public Conveyor(Hopper hopper) {
-    this.hopper = hopper;
+  public Conveyor(ConveyorSystem conveyorSystem) {
+    this.conveyorSystem = conveyorSystem;
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(this.hopper);
+    addRequirements(this.conveyorSystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    hopper.conveyor(true);
+    conveyorSystem.conveyor(HopperConstants.conveyorSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (hopper.conveyorRunning() == false) {
-      hopper.conveyor(true);
-    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    hopper.conveyor(false);
+    conveyorSystem.conveyor(0);
   }
 
   // Returns true when the command should end.
