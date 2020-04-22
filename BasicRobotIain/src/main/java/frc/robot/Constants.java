@@ -35,4 +35,16 @@ public final class Constants {
 
         public static final int PCMID = 1;
     }
+
+    public class HopperConstants{
+
+        public static final int conveyorMotorID = 5;
+        public static final int kickupMotorID = 6;
+        public static final int flywheelMotorID = 7;
+
+        public static final int doorID = 2;
+
+        public static final double conveyorSpeed = 0.5;
+        public static final double kickupSpeed = 0.5;
+    }
 }
