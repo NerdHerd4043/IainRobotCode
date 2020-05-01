@@ -18,8 +18,7 @@ package frc.robot;
  */
 public final class Constants {
 
-    public final class DriveConstants{
-        
+    public final class DriveConstants {
         public static final int backLeftMotorID = 1;
         public static final int frontLeftMotorID = 2;
         public static final int frontRightMotorID = 3;
@@ -29,15 +28,15 @@ public final class Constants {
 
         public static final boolean shiftUpID = false;
         public static final boolean shiftDownID = true;
+
     }
 
-    public class RobotConstants{
-
+    public class RobotConstants {
         public static final int PCMID = 1;
+
     }
 
-    public class HopperConstants{
-
+    public class HopperConstants {
         public static final int conveyorMotorID = 5;
         public static final int kickupMotorID = 6;
         public static final int flywheelMotorID = 7;
@@ -46,5 +45,15 @@ public final class Constants {
 
         public static final double conveyorSpeed = 0.5;
         public static final double kickupSpeed = 0.5;
+
     }
+
+    public class ClimberConstants {
+        public static final int climberFrontID = 8;
+        public static final int climberBackID = 9;
+
+        public static final int armsID = 3;
+
+    }
+
 }
